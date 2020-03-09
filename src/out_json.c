@@ -24,6 +24,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <locale.h>
 #include <assert.h>
 #ifdef HAVE_CTYPE_H
 #  include <ctype.h>
@@ -1810,6 +1811,8 @@ dwg_write_json (Bit_Chain *restrict dat, Dwg_Data *restrict dwg)
   const int minimal = dwg->opts & DWG_OPTS_MINIMAL;
   struct Dwg_Header *obj = &dwg->header;
   int error = 0;
+
+  setlocale (LC_NUMERIC, "C");
 
   fprintf (dat->fh,
            "{\n"
